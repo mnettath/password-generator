@@ -1,0 +1,20 @@
+Building a Password Generator 
+(RANDOM)
+
+VARIABLES - passwordLength, for the confirms 
+
+prompt the user for how many chars they would like in their password 
+
+CONFIRMS STORE BOOLEAN VALUES 
+confirm to ask user if they would like special chars 
+confirm to ask user if they would like numeric chars 
+confirm to ask user if they would like lowercase chars 
+confirm to ask user if they would like uppercase chars 
+
+HOW AM I GOING TO BUILD THIS???
+
+we are going to need to use Math.floor(), Math.random()
+
+var specialChars = ["+", "$", "~"];
+using 3 values for now, can add more later 
+var numericChars = ["1", "2", "3"];
