@@ -70,8 +70,10 @@ function generatePassword() {
     "How many characters would you like your password to contain?"
   );
   if (useCharsLength < 8 || useCharsLength > 128) {
-    prompt("Try again! Your password must be between 8-128 characters");
-  }
+    useCharsLength = prompt(
+      "Try again! Your password must be between 8-128 characters"
+    );
+  } // does not work right now
 
   var useSpecialChars = confirm("Click ok to confirm special characters");
 
