@@ -96,6 +96,8 @@ function generatePassword() {
 
   var result = [];
 
+  var possibleChars = [];
+
   // Purpose: generate a random character from a selected array
   function randomChar(arr) {
     var randomIndex = Math.floor(Math.random() * arr.length);
@@ -103,23 +105,31 @@ function generatePassword() {
   }
 
   if (userOptions.willHaveSpecChars) {
-    result.push(randomChar(specialChars));
-    // this is returning each selected option 10 times instead of making the total amount of characters 10
+    possibleChars = possibleChars.concat(specialChars); // merge specialChars into possibleChars array
+    console.log(possibleChars);
   }
 
   if (userOptions.willHaveNumChars) {
-    result.push(randomChar(numericChars));
+    possibleChars = possibleChars.concat(numericChars);
+    console.log(possibleChars);
   }
 
   if (userOptions.willHaveLowChars) {
-    result.push(randomChar(lowerCaseChars));
+    possibleChars = possibleChars.concat(lowerCaseChars);
+    console.log(possibleChars);
   }
 
   if (userOptions.willHaveUpperChars) {
-    result.push(randomChar(upperCaseChars));
+    possibleChars = possibleChars.concat(upperCaseChars);
+    console.log(possibleChars);
   }
 
-  console.log(result);
+  for (i = 0; i < useCharsLength; i++) {
+    var selectedChar = randomChar(possibleChars);
+    console.log(selectedChar);
+    result.push(selectedChar);
+  }
+
   var finalPassword = result.join(""); // needed to take everything that was in the array and combine it into a string so the textbox wouldnt say undefined anymore
   return finalPassword; // return exits out of this function and places final Password into the password var
 }
