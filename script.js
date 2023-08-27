@@ -96,34 +96,27 @@ function generatePassword() {
 
   var result = [];
 
+  // Purpose: generate a random character from a selected array
+  function randomChar(arr) {
+    var randomIndex = Math.floor(Math.random() * arr.length);
+    return arr[randomIndex];
+  }
+
   if (userOptions.willHaveSpecChars) {
-    var randomIndex = Math.floor(Math.random() * specialChars.length);
-    var randomChar = specialChars[randomIndex];
-    console.log(randomChar);
-    // lets randomly grab a member from the special character's array
-    // push into the results array
-    result.push(randomChar);
+    result.push(randomChar(specialChars));
+    // this is returning each selected option 10 times instead of making the total amount of characters 10
   }
 
   if (userOptions.willHaveNumChars) {
-    var randomIndex = Math.floor(Math.random() * numericChars.length);
-    var randomChar = numericChars[randomIndex];
-    console.log(randomChar);
-    result.push(randomChar);
+    result.push(randomChar(numericChars));
   }
 
   if (userOptions.willHaveLowChars) {
-    var randomIndex = Math.floor(Math.random() * lowerCaseChars.length);
-    var randomChar = lowerCaseChars[randomIndex];
-    console.log(randomChar);
-    result.push(randomChar);
+    result.push(randomChar(lowerCaseChars));
   }
 
   if (userOptions.willHaveUpperChars) {
-    var randomIndex = Math.floor(Math.random() * upperCaseChars.length);
-    var randomChar = upperCaseChars[randomIndex];
-    console.log(randomChar);
-    result.push(randomChar);
+    result.push(randomChar(upperCaseChars));
   }
 
   console.log(result);
