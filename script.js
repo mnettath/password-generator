@@ -1,8 +1,7 @@
 // VARIABLE DECLARATIONS
 
 var specialChars = ["+", "$", "~", "!", "#", "%", "&", "~", "@", "?"];
-// using 3 values for now, can add more later
-var numericChars = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+var numericChars = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var lowerCaseChars = [
   "a",
   "b",
@@ -64,7 +63,7 @@ var generateBtn = document.querySelector("#generate"); //storing a reference to 
 
 // FUNCTIONS
 
-// purpose: figure out what the user wants in their password
+// Purpose: figure out what the user wants in their password
 function generatePassword() {
   var useCharsLength = prompt(
     "How many characters would you like your password to contain?"
@@ -73,7 +72,7 @@ function generatePassword() {
     useCharsLength = prompt(
       "Try again! Your password must be between 8-128 characters"
     );
-  } // does not work right now
+  }
 
   var useSpecialChars = confirm("Click ok to confirm special characters");
 
@@ -89,6 +88,7 @@ function generatePassword() {
   console.log(useLowerCaseChars);
   console.log(useUpperCaseChars);
 
+  // Purpose: use in if statements depending on what the user would like to include in their password
   var userOptions = {
     willHaveSpecChars: useSpecialChars,
     willHaveNumChars: useNumericChars,
@@ -98,16 +98,17 @@ function generatePassword() {
 
   var result = [];
 
+  // Purpose: hold an array of characters the user selected
   var possibleChars = [];
 
-  // Purpose: generate a random character from a selected array
+  // Purpose: generate a random character from the possibleChars array. Function is called in the for loop
   function randomChar(arr) {
     var randomIndex = Math.floor(Math.random() * arr.length);
     return arr[randomIndex];
   }
 
   if (userOptions.willHaveSpecChars) {
-    possibleChars = possibleChars.concat(specialChars); // merge specialChars into possibleChars array
+    possibleChars = possibleChars.concat(specialChars); // concat = method to merge two or more arrays into a single array. Does not change original arrays but returns a new array.
     console.log(possibleChars);
   }
 
@@ -126,20 +127,19 @@ function generatePassword() {
     console.log(possibleChars);
   }
 
+  // Purpose: sets how long the password will be, given the user's input. selectedChars are those found in the possibleChar array that were randomly selected
   for (i = 0; i < useCharsLength; i++) {
     var selectedChar = randomChar(possibleChars);
     console.log(selectedChar);
     result.push(selectedChar);
   }
 
-  var finalPassword = result.join(""); // needed to take everything that was in the array and combine it into a string so the textbox wouldnt say undefined anymore
+  var finalPassword = result.join(""); // join = takes everything that was in the result array and combines it into a string, textbox doesn't say undefined anymore
+
   return finalPassword; // return exits out of this function and places final Password into the password var
 }
 
-//   var result = [];
-//eventually, this array will store the random generated password. I will use the push method to add to this array and this is what I will return to the user
-
-// purpose: to pull the password from generatePassword function and actually write it in the text area
+// Purpose: to pull the password from generatePassword function and actually write it in the text area
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password"); //storing a reference to the text area element
@@ -149,5 +149,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-// console.log("Hello");
