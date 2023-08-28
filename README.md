@@ -14,7 +14,7 @@ To use the password generator, click the "Generate Password" button in the deplo
 
 ![Password Generator Screenshot](./password-generator-screenshot.png)
 
-Link to deployed application:
+Link to deployed application: https://mnettath.github.io/password-generator/
 
 ## Credits
 
